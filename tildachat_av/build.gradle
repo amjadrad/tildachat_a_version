@@ -31,7 +31,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.amjadrad'
             artifactId = 'tildachat_a_version'
-            version = '0.0.3'
+            version = '0.0.4'
 
             afterEvaluate {
                 from components.findByName('release')
