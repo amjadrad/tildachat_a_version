@@ -6,8 +6,10 @@ public class TildaChatAV_Test {
 
     public static String TAG = "TildaChatAV_Test";
 
-    public static void testMe(){
+    public static void testMe() {
+
         Log.d(TAG, "testMe: Yes, It's work.");
+    
     }
 
 }
