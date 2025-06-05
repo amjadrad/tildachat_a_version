@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     id 'maven-publish'
-
 }
 
 android {
@@ -22,8 +21,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -32,7 +31,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.amjadrad'
             artifactId = 'tildachat_a_version'
-            version = '1.0'
+            version = '0.0.3'
 
             afterEvaluate {
                 from components.findByName('release')
