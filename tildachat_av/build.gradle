@@ -1,5 +1,6 @@
 plugins {
-    alias(libs.plugins.android.library)
+//    alias(libs.plugins.android.library)
+    id 'com.android.library'
     id 'maven-publish'
 }
 
@@ -14,6 +15,10 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
+    publishing {
+        singleVariant("release")
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,20 +31,23 @@ android {
     }
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.github.amjadrad'
-            artifactId = 'tildachat_a_version'
-            version = '0.0.4'
-
-            afterEvaluate {
-                from components.findByName('release')
+afterEvaluate {
+    println "Registered components: " + components*.name
+    println "Applied plugins: " + project.plugins*.class
+    tasks.matching { it.name.contains("publish") }.each { println "Task: ${it.name}" }
+//    println components.names
+    // This will show you available components like 'java', maybe not 'release'
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.amjadrad'
+                artifactId = 'tildachat_a_version'
+                version = '0.0.5'
             }
         }
     }
 }
-
 
 
 dependencies {
