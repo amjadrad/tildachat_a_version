@@ -25,6 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        viewBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -57,4 +60,45 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
+
+    //SocketIO
+    implementation(libs.socket.io.client) {
+        exclude group: 'org.json', module: 'json'
+    }
+    //GSON
+    implementation libs.gson
+    //scalable size unit
+    implementation libs.sdp.android
+    //scalable size unit for texts
+    implementation libs.ssp.android
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    //Circle ImageView
+    implementation libs.circleimageview
+    //Zoom picture
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    //Persian Date Calendar
+    implementation 'com.github.hamsaadev:Persian-Date-Picker-Dialog:V1.0'
+    //Tilda file picker
+    implementation libs.tildafilepicker
+    //Emoji
+    implementation "io.github.aghajari:AXEmojiView:1.5.2"
+    implementation "io.github.aghajari:AXEmojiView-AppleProvider:1.5.2"
+    //ExoPlayer
+    implementation libs.androidx.media3.exoplayer
+    implementation libs.androidx.media3.ui
+    implementation libs.androidx.media3.common
+//    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    //Swipe to dismiss
+    implementation libs.slidableactivity
+    //TextviewLink
+    implementation libs.better.link.movement.method
+    //Blur
+    implementation libs.blurview
+    //Voice recorder
+    implementation libs.recordwav
+
+
+
 }

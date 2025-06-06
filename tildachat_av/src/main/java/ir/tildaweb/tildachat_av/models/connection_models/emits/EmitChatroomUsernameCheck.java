@@ -1,0 +1,17 @@
+package ir.tildaweb.tildachat_av.models.connection_models.emits;
+
+import com.google.gson.annotations.SerializedName;
+
+public class EmitChatroomUsernameCheck {
+
+    @SerializedName("username")
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+}

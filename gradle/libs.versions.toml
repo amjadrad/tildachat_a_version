@@ -1,5 +1,9 @@
 [versions]
 agp = "8.9.1"
+blurview = "version-2.0.6"
+betterLinkMovementMethod = "2.2.0"
+circleimageview = "3.1.0"
+gson = "2.11.0"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -10,9 +14,25 @@ activityCompose = "1.10.1"
 composeBom = "2024.09.00"
 appcompat = "1.7.1"
 material = "1.12.0"
+media3Common = "1.7.1"
+media3Ui = "1.7.1"
+media3Exoplayer = "1.7.1"
+sdpAndroid = "1.1.1"
+slidableactivity = "2.1.0"
+recordwav = "1.2.2"
+socketIoClient = "2.1.1"
+sspAndroid = "1.1.1"
+tildafilepicker = "1.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3Exoplayer" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3Ui" }
+androidx-media3-common = { module = "androidx.media3:media3-common", version.ref = "media3Common" }
+better-link-movement-method = { module = "me.saket:better-link-movement-method", version.ref = "betterLinkMovementMethod" }
+blurview = { module = "com.github.Dimezis:BlurView", version.ref = "blurview" }
+circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -28,6 +48,12 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+recordwav = { module = "com.github.shaoshuai904:RecordWav", version.ref = "recordwav" }
+sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
+slidableactivity = { module = "com.r0adkll:slidableactivity", version.ref = "slidableactivity" }
+socket-io-client = { module = "io.socket:socket.io-client", version.ref = "socketIoClient" }
+ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+tildafilepicker = { module = "com.github.amjadrad:TildaFilePicker", version.ref = "tildafilepicker" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
