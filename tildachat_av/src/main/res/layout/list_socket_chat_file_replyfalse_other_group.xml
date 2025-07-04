@@ -42,7 +42,7 @@
                     android:paddingRight="@dimen/_8sdp"
                     android:paddingBottom="@dimen/_4sdp"
                     android:text="..."
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/colorChatOtherText"
                     android:textSize="@dimen/_10ssp"
                     android:textStyle="normal" />
 
@@ -63,7 +63,7 @@
                         android:layout_marginRight="@dimen/_4sdp"
                         android:gravity="right"
                         android:text="00:00"
-                        android:textColor="@color/colorMutedText"
+                        android:textColor="@color/colorChatOtherText"
                         android:textSize="@dimen/_9ssp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -74,7 +74,7 @@
                         android:layout_marginRight="@dimen/_8sdp"
                         android:gravity="right"
                         android:text="0%"
-                        android:textColor="@color/colorMutedText"
+                        android:textColor="@color/colorChatOtherText"
                         android:textSize="@dimen/_10ssp"
                         android:visibility="gone" />
 
@@ -103,13 +103,13 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="@drawable/bg_primary_rounded_default">
+                    android:background="@drawable/bg_light_rounded_default">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_12sdp"
                         android:layout_height="@dimen/_12sdp"
                         android:layout_gravity="center"
-                        android:tint="@color/colorWhite"
+                        android:tint="@color/colorChatOtherSecondText"
                         app:srcCompat="@drawable/ic_file_plus" />
 
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -119,13 +119,13 @@
                     android:layout_width="@dimen/_14sdp"
                     android:layout_height="@dimen/_14sdp"
                     android:layout_gravity="bottom|left"
-                    android:background="@drawable/bg_badge_fill_light">
+                    android:background="@drawable/bg_chat_file_border_other">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_6sdp"
                         android:layout_height="@dimen/_6sdp"
                         android:layout_gravity="center"
-                        android:tint="@color/colorWhite"
+                        android:tint="@color/colorChatOtherSecondText"
                         app:srcCompat="@drawable/ic_down_arrow" />
 
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>

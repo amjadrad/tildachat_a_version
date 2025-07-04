@@ -6,11 +6,11 @@
         <selector>
             <item>
                 <shape>
-                    <corners android:radius="@dimen/_8sdp" />
-<!--                    <solid android:color="#fefefe"/>-->
+                    <corners android:radius="@dimen/_24sdp" />
+                    <solid android:color="#ffffff"/>
                     <stroke
                         android:width="@dimen/_1sdp"
-                        android:color="#e0eae9" />
+                        android:color="@color/colorChatMeBackground" />
                 </shape>
             </item>
         </selector>

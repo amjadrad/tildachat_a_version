@@ -28,7 +28,7 @@
             android:paddingRight="@dimen/_8sdp"
             android:paddingBottom="@dimen/_4sdp"
             android:text="...."
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorChatOtherText"
             android:textSize="@dimen/_10ssp"
             android:textStyle="normal" />
 
@@ -49,7 +49,7 @@
                 android:layout_marginRight="@dimen/_4sdp"
                 android:gravity="right"
                 android:text="00:00"
-                android:textColor="@color/colorMutedText"
+                android:textColor="@color/colorChatOtherText"
                 android:textSize="@dimen/_9ssp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

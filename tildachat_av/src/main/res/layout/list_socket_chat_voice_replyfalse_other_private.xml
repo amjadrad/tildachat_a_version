@@ -37,7 +37,7 @@
                 android:paddingRight="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="پیام صوتی"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorChatOtherText"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="normal" />
 
@@ -58,7 +58,7 @@
                     android:layout_marginRight="@dimen/_4sdp"
                     android:gravity="right"
                     android:text="00:00"
-                    android:textColor="@color/colorMutedText"
+                    android:textColor="@color/colorChatOtherText"
                     android:textSize="@dimen/_9ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -69,7 +69,7 @@
                     android:layout_marginRight="@dimen/_8sdp"
                     android:gravity="right"
                     android:text="0%"
-                    android:textColor="@color/colorMutedText"
+                    android:textColor="@color/colorChatOtherText"
                     android:textSize="@dimen/_9ssp"
                     android:visibility="gone" />
 
@@ -97,7 +97,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
-                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardBackgroundColor="@color/colorChatOtherSecondBackground"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:cardElevation="@dimen/_1sdp">
 
@@ -105,7 +105,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_gravity="center"
-                    android:tint="@color/colorWhite"
+                    android:tint="@color/colorChatOtherSecondText"
                     app:srcCompat="@drawable/ic_play_ic" />
 
             </androidx.cardview.widget.CardView>

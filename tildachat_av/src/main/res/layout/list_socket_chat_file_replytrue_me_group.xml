@@ -45,23 +45,23 @@
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_12sdp"
                     android:layout_gravity="center"
-                    android:tint="@color/colorPrimary"
+                    android:tint="@color/colorChatMeText"
                     app:srcCompat="@drawable/ic_file_plus" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/coordinatorDownloadedFile"
-                android:layout_width="@dimen/_14sdp"
-                android:layout_height="@dimen/_14sdp"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
                 android:layout_gravity="bottom|left"
-                android:background="@drawable/bg_badge_fill_primary">
+                android:background="@drawable/bg_chat_file_border_me">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_6sdp"
                     android:layout_height="@dimen/_6sdp"
                     android:layout_gravity="center"
-                    android:tint="@color/colorPrimary"
+                    android:tint="@color/colorChatMeText"
                     app:srcCompat="@drawable/ic_down_arrow" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -81,7 +81,7 @@
                 android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginRight="@dimen/_4sdp"
-                android:background="@drawable/bg_primary_rounded_soft_for_char"
+                android:background="@drawable/bg_chat_rounded_soft_second_me"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
@@ -93,7 +93,7 @@
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginRight="@dimen/_4sdp"
                     android:layout_marginBottom="@dimen/_2sdp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/colorChatMeSecondText" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewReplyPicture"
@@ -119,7 +119,7 @@
                     android:layout_marginRight="@dimen/_8sdp"
                     android:singleLine="true"
                     android:text="متن"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorChatMeSecondText"
                     android:textSize="@dimen/_9ssp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -134,9 +134,9 @@
                 android:paddingRight="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_4sdp"
                 android:text="...."
-                android:textColor="@color/colorWhite"
-                android:textColorHighlight="@color/colorWhite"
-                android:textColorLink="@color/colorLight1"
+                android:textColor="@color/colorChatMeText"
+                android:textColorHighlight="@color/colorChatMeText"
+                android:textColorLink="@color/colorChatLinkText"
                 android:textSize="@dimen/_10ssp"
                 android:textStyle="normal" />
 
@@ -154,7 +154,7 @@
                     android:layout_height="@dimen/_10sdp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_chat_single_check"
-                    android:tint="@color/colorWhite" />
+                    android:tint="@color/colorChatMeText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTime"
@@ -165,7 +165,7 @@
                     android:layout_marginRight="@dimen/_4sdp"
                     android:gravity="right"
                     android:text="00:00"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorChatMeText"
                     android:textSize="@dimen/_9ssp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -176,7 +176,7 @@
                     android:layout_marginRight="@dimen/_8sdp"
                     android:gravity="right"
                     android:text="0%"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorChatMeText"
                     android:textSize="@dimen/_9ssp"
                     android:visibility="gone" />
             </androidx.appcompat.widget.LinearLayoutCompat>

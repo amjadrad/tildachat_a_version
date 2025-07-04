@@ -50,7 +50,7 @@
                         android:layout_width="@dimen/_12sdp"
                         android:layout_height="@dimen/_12sdp"
                         android:layout_gravity="center"
-                        android:tint="@color/colorPrimary"
+                        android:tint="@color/colorChatMeText"
                         app:srcCompat="@drawable/ic_file_plus" />
 
 
@@ -58,16 +58,16 @@
 
                 <androidx.coordinatorlayout.widget.CoordinatorLayout
                     android:id="@+id/coordinatorDownloadedFile"
-                    android:layout_width="@dimen/_14sdp"
-                    android:layout_height="@dimen/_14sdp"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
                     android:layout_gravity="bottom|left"
-                    android:background="@drawable/bg_badge_fill_primary">
+                    android:background="@drawable/bg_chat_file_border_me">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_6sdp"
                         android:layout_height="@dimen/_6sdp"
                         android:layout_gravity="center"
-                        android:tint="@color/colorPrimary"
+                        android:tint="@color/colorChatMeText"
                         app:srcCompat="@drawable/ic_down_arrow" />
 
                 </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -91,7 +91,7 @@
                     android:paddingRight="@dimen/_8sdp"
                     android:paddingBottom="@dimen/_4sdp"
                     android:text="...."
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/colorChatMeText"
                     android:textSize="@dimen/_10ssp"
                     android:textStyle="normal" />
 
@@ -109,7 +109,7 @@
                         android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_chat_single_check"
-                        android:tint="@color/colorWhite" />
+                        android:tint="@color/colorChatMeText" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvTime"
@@ -120,7 +120,7 @@
                         android:layout_marginRight="@dimen/_4sdp"
                         android:gravity="right"
                         android:text="00:00"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/colorChatMeText"
                         android:textSize="@dimen/_9ssp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -131,7 +131,7 @@
                         android:layout_marginRight="@dimen/_8sdp"
                         android:gravity="right"
                         android:text="0%"
-                        android:textColor="@color/white"
+                        android:textColor="@color/colorChatMeText"
                         android:textSize="@dimen/_10ssp"
                         android:visibility="gone" />
 

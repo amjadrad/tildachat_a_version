@@ -4,7 +4,8 @@
     <item>
         <shape>
             <corners android:bottomLeftRadius="@dimen/_10sdp" android:bottomRightRadius="@dimen/_2sdp" android:topLeftRadius="@dimen/_10sdp" android:topRightRadius="@dimen/_10sdp" />
-            <gradient android:endColor="#2266ff" android:startColor="#2277ff" />
+            <solid android:color="@color/colorChatMeBackground" />
+            <!--            <gradient android:endColor="#2266ff" android:startColor="#2277ff" />-->
             <!--            <gradient android:endColor="@color/colorPrimaryDark" android:startColor="@color/colorPrimary" />-->
         </shape>
     </item>

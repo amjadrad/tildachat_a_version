@@ -115,7 +115,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     private int maxNewLineCount = 255;
     private int messageTimer = -1;
     private boolean isMessageTimerOn = false;
-    private boolean isShowVoice = true, isShowFile = true, isShowPicture = true;
+    private boolean isShowVoice = true, isShowFile = true, isShowPicture = true, isShowEmoji = true;
     private ArrayList<String> usersAreWriting = new ArrayList<>();
     private ArrayList<Integer> usersAreWritingIds = new ArrayList<>();
     private Handler handlerUsersAreWriting;
@@ -518,7 +518,8 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
                             adapterPrivateChatMessages.getMessagePosition(searchMessageId, AdapterPrivateChatMessages.SearchType.REPLY);
                         } else {
 //                            adapterPrivateChatMessages.setUserReadPreviousMessage(nextPage != 1);
-                            if (nextPage <= 2) {
+                            if (nextPage <= 1) {
+                                binding.recyclerViewMessages.scrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
                                 binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
                             }
                         }
@@ -1001,7 +1002,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
 //                emojiPopup.dismiss();
 //            }
             if (binding.btnGoDown.getVisibility() != View.VISIBLE) {
-                binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
+                binding.recyclerViewMessages.scrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
             }
         } else if (id == binding.imageViewMenu.getId()) {
             onMoreClicked();
@@ -1015,7 +1016,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         } else if (view.getId() == binding.btnGoDown.getId()) {
             if (adapterPrivateChatMessages != null && adapterPrivateChatMessages.getItemCount() > 0) {
                 adapterPrivateChatMessages.setUserReadPreviousMessage(false);
-                binding.recyclerViewMessages.smoothScrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
+                binding.recyclerViewMessages.scrollToPosition(adapterPrivateChatMessages.getItemCount() - 1);
             }
         }
     }
@@ -1148,8 +1149,9 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         binding.tvVoiceTimer.setText("0s");
         binding.containerVoiceRecord.setVisibility(View.GONE);
         binding.imageViewSend.setVisibility(View.GONE);
-        binding.imageViewEmoji.setVisibility(View.VISIBLE);
         binding.etMessage.setVisibility(View.VISIBLE);
+        if (isShowEmoji)
+            binding.imageViewEmoji.setVisibility(View.VISIBLE);
         if (isShowFile)
             binding.imageViewFile.setVisibility(View.VISIBLE);
         if (isShowVoice)
@@ -1213,8 +1215,9 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         binding.tvVoiceTimer.setText("0s");
         binding.containerVoiceRecord.setVisibility(View.GONE);
         binding.imageViewSend.setVisibility(View.GONE);
-        binding.imageViewEmoji.setVisibility(View.VISIBLE);
         binding.etMessage.setVisibility(View.VISIBLE);
+        if (isShowEmoji)
+            binding.imageViewEmoji.setVisibility(View.VISIBLE);
         if (isShowFile)
             binding.imageViewFile.setVisibility(View.VISIBLE);
         if (isShowVoice)
@@ -1312,6 +1315,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     }
 
     public void showEmojiButton(boolean visible) {
+        this.isShowEmoji = visible;
         binding.imageViewEmoji.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 

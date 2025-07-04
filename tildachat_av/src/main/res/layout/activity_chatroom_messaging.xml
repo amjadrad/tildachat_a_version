@@ -118,10 +118,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_margin="@dimen/_8sdp"
         android:outlineAmbientShadowColor="@color/colorText"
         android:outlineSpotShadowColor="@color/colorText"
-        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardBackgroundColor="#aafcfcfc"
+        app:cardCornerRadius="0dp"
         app:cardElevation="0dp"
         tools:targetApi="p">
 
@@ -129,6 +129,10 @@
             android:id="@+id/linearChatBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/bg_chat_box"
             android:orientation="vertical">
 
@@ -141,7 +145,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
                     android:padding="@dimen/_12sdp"
                     app:srcCompat="@drawable/ic_reply"
                     app:tint="@color/colorMutedText" />
@@ -159,7 +164,7 @@
                         android:gravity="right"
                         android:text="پاسخ به پیام"
                         android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -171,13 +176,13 @@
                         android:maxLines="1"
                         android:text="پیام"
                         android:textColor="@color/colorMutedText"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_10sdp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewReplyClose"
-                    android:layout_width="@dimen/_48sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="@dimen/_14sdp"
@@ -195,7 +200,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_40sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
                     android:padding="@dimen/_12sdp"
                     app:srcCompat="@drawable/ic_edit"
                     app:tint="@color/colorMutedText" />
@@ -213,7 +219,7 @@
                         android:gravity="right"
                         android:text="ویرایش پیام"
                         android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:textStyle="bold" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -225,13 +231,13 @@
                         android:maxLines="1"
                         android:text="ویرایش پیام"
                         android:textColor="@color/colorMutedText"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_10sdp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewUpdateClose"
-                    android:layout_width="@dimen/_48sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="@dimen/_14sdp"
@@ -247,7 +253,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewSend"
                     android:layout_width="@dimen/_38sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_gravity="center"
                     android:padding="@dimen/_10sdp"
                     android:rotation="45"
                     android:visibility="gone"
@@ -256,8 +263,9 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvMessageTimer"
-                    android:layout_width="@dimen/_48sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_width="@dimen/_42sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:layout_gravity="center"
                     android:gravity="center"
                     android:padding="@dimen/_10sdp"
                     android:text="0s"
@@ -266,7 +274,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewVoice"
                     android:layout_width="@dimen/_38sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_42sdp"
                     android:padding="@dimen/_10sdp"
                     app:srcCompat="@drawable/ic_mic"
                     app:tint="@color/colorMutedText" />
@@ -274,7 +282,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewFile"
                     android:layout_width="@dimen/_38sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_42sdp"
                     android:padding="@dimen/_10sdp"
                     android:tint="@color/colorMutedText"
                     android:visibility="visible"
@@ -284,7 +292,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewImage"
                     android:layout_width="@dimen/_38sdp"
-                    android:layout_height="@dimen/_48sdp"
+                    android:layout_height="@dimen/_42sdp"
                     android:padding="@dimen/_10sdp"
                     android:tint="@color/colorMutedText"
                     android:visibility="visible"
@@ -308,9 +316,9 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageViewEmoji"
-                    android:layout_width="@dimen/_48sdp"
-                    android:layout_height="@dimen/_48sdp"
-                    android:padding="@dimen/_14sdp"
+                    android:layout_width="@dimen/_38sdp"
+                    android:layout_height="@dimen/_42sdp"
+                    android:padding="@dimen/_10sdp"
                     android:tint="@color/colorMutedText"
                     app:srcCompat="@drawable/ic_smile"
                     app:tint="@color/colorMutedText" />
@@ -325,7 +333,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvVoiceTimerNote"
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/_48sdp"
+                        android:layout_height="@dimen/_42sdp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
@@ -337,7 +345,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvVoiceTimer"
                         android:layout_width="@dimen/_48sdp"
-                        android:layout_height="@dimen/_48sdp"
+                        android:layout_height="@dimen/_42sdp"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
                         android:text="0s"
@@ -345,9 +353,9 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imageViewCancelVoice"
-                        android:layout_width="@dimen/_48sdp"
-                        android:layout_height="@dimen/_48sdp"
-                        android:padding="@dimen/_14sdp"
+                        android:layout_width="@dimen/_40sdp"
+                        android:layout_height="@dimen/_40sdp"
+                        android:padding="@dimen/_12sdp"
                         android:tint="@color/colorMutedText"
                         app:srcCompat="@drawable/ic_close"
                         app:tint="@color/colorMutedText" />
@@ -451,7 +459,7 @@
         android:layout_marginRight="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_88sdp"
         android:visibility="visible"
-        app:cardBackgroundColor="@color/colorLight2"
+        app:cardBackgroundColor="#f3f4f5"
         app:cardCornerRadius="@dimen/_4sdp"
         app:cardElevation="@dimen/_4sdp">
 

@@ -109,11 +109,11 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:background="@drawable/bg_info_rounded_default"
+                android:background="@drawable/chat_bubble_send_me"
                 android:paddingLeft="@dimen/_4sdp"
                 android:paddingRight="@dimen/_4sdp"
                 android:text="هروقت عکس رو ببینه حذف میشه"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorChatMeText"
                 android:textSize="@dimen/_8ssp" />
 
 

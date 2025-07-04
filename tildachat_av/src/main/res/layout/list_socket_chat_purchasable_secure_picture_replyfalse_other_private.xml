@@ -123,11 +123,11 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:background="@drawable/bg_info_rounded_default"
+                android:background="@drawable/chat_bubble_send_other"
                 android:paddingLeft="@dimen/_4sdp"
                 android:paddingRight="@dimen/_4sdp"
                 android:text="هروقت عکس رو ببینی حذف میشه"
-                android:textColor="@color/colorText"
+                android:textColor="@color/colorChatOtherText"
                 android:textSize="@dimen/_8ssp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -136,25 +136,25 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:background="@drawable/bg_info_rounded_default"
+                android:background="@drawable/chat_bubble_send_other"
                 android:paddingLeft="@dimen/_4sdp"
                 android:paddingRight="@dimen/_4sdp"
-                android:text="واسه دیدن این عکس باید آیپام بخری"
-                android:textColor="@color/colorText"
+                android:text="برای دیدن این عکس باید اعتبار داشته باشید"
+                android:textColor="@color/colorChatOtherText"
                 android:textSize="@dimen/_8ssp" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_4sdp"
-                android:layout_marginBottom="@dimen/_4sdp"
-                android:background="@drawable/bg_info_rounded_default"
-                android:paddingLeft="@dimen/_4sdp"
-                android:paddingRight="@dimen/_4sdp"
-                android:text="مخاطبت این عکس رو پولی برات ارسال کرده"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/_8ssp" />
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="@dimen/_4sdp"-->
+<!--                android:layout_marginBottom="@dimen/_4sdp"-->
+<!--                android:background="@drawable/chat_bubble_send_other"-->
+<!--                android:paddingLeft="@dimen/_4sdp"-->
+<!--                android:paddingRight="@dimen/_4sdp"-->
+<!--                android:text="مخاطبت این عکس رو پولی برات ارسال کرده"-->
+<!--                android:textColor="@color/colorChatOtherText"-->
+<!--                android:textSize="@dimen/_8ssp" />-->
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

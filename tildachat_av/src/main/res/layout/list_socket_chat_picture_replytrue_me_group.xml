@@ -23,7 +23,7 @@
             android:layout_marginLeft="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:layout_marginRight="@dimen/_4sdp"
-            android:background="@drawable/bg_primary_rounded_soft_for_char"
+            android:background="@drawable/bg_chat_rounded_soft_second_me"
             android:clickable="true"
             android:focusable="true"
             android:orientation="horizontal">
@@ -35,7 +35,7 @@
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginRight="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_2sdp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorChatMeSecondText" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewReplyPicture"
@@ -61,7 +61,7 @@
                 android:layout_marginRight="@dimen/_8sdp"
                 android:singleLine="true"
                 android:text="متن"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorChatMeSecondText"
                 android:textSize="@dimen/_9ssp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

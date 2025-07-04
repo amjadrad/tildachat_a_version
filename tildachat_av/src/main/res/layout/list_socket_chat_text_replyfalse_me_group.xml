@@ -27,9 +27,9 @@
             android:paddingRight="@dimen/_8sdp"
             android:paddingBottom="@dimen/_4sdp"
             android:text="متن تست"
-            android:textColor="@color/colorWhite"
-            android:textColorHighlight="@color/colorWhite"
-            android:textColorLink="@color/colorLight1"
+            android:textColor="@color/colorChatMeText"
+            android:textColorHighlight="@color/colorChatMeText"
+            android:textColorLink="@color/colorChatLinkText"
             android:textSize="@dimen/_10ssp"
             android:textStyle="normal" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="@dimen/_10sdp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_chat_single_check"
-                android:tint="@color/colorWhite" />
+                android:tint="@color/colorChatMeText" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTime"
@@ -58,7 +58,7 @@
                 android:layout_marginRight="@dimen/_4sdp"
                 android:gravity="right"
                 android:text="00:00"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorChatMeText"
                 android:textSize="@dimen/_9ssp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

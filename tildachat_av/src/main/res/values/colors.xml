@@ -43,4 +43,20 @@
     <color name="colorWarning">#ffad0a</color>
     <color name="colorWarningSoft">#F8E9CC</color>
     <color name="colorBgLoading">#cceceefd</color>
+
+
+    <!--    Chat-->
+    <color name="colorChatLinkText">#3090ff</color>
+
+    <color name="colorChatMeText">#2b2b2b</color>
+    <color name="colorChatMeBackground">#f0f0f0</color>
+    <color name="colorChatMeSecondText">#606060</color>
+    <color name="colorChatMeSecondBackground">#ffffff</color>
+
+    <color name="colorChatOtherText">#ffffff</color>
+    <color name="colorChatOtherBackground">#36b084</color>
+    <color name="colorChatOtherSecondText">#46c094</color>
+    <color name="colorChatOtherSecondBackground">#ffffff</color>
+
+
 </resources>
