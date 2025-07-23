@@ -166,9 +166,6 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         emojiView.setEditText(binding.etMessage);
         emojiPopup = new AXEmojiPopup(emojiView);
 
-//        AXSingleEmojiView emojiView = new AXSingleEmojiView(this);
-//        emojiView.setEditText(binding.etMessage);
-
         //Get intent info
         userId = getIntent().getIntExtra("user_id", -1);
         if (TildaChatApp._FILE_URL != null && !TildaChatApp._FILE_URL.isEmpty()) {
@@ -784,9 +781,13 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
     }
 
     @Override
-    public void onShowPopup() {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+    public void onShowPopup(View view) {
+        try {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        } catch (Exception e) {
+
+        }
     }
 
     @Override

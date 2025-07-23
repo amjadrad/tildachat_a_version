@@ -755,7 +755,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
             }
             albumPopup.dismiss();
         });
-        iChatUtils.onShowPopup();
+        iChatUtils.onShowPopup(view);
         albumPopup.show();
 
 //        MenuInflater inflater = popup.getMenuInflater();

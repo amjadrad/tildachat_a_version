@@ -1,12 +1,14 @@
 package ir.tildaweb.tildachat_av.interfaces;
 
 
+import android.view.View;
+
 import ir.tildaweb.tildachat_av.adapter.AdapterPrivateChatMessages;
 import ir.tildaweb.tildachat_av.models.base_models.Message;
 
 public interface IChatUtils {
 
-    void onShowPopup();
+    void onShowPopup(View view);
 
     void onCopy();
 
