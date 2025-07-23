@@ -19,8 +19,8 @@ public class Chat extends ChatroomMessagingActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        showEmojiButton(false);
-        showFileButton(false);
+        showEmojiButton(true);
+        showFileButton(true);
         setMaxMessageLength(2048);
         setMaxEmojiCount(2);
         setMaxNewLineCount(3);

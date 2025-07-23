@@ -6,6 +6,8 @@ import ir.tildaweb.tildachat_av.models.base_models.Message;
 
 public interface IChatUtils {
 
+    void onShowPopup();
+
     void onCopy();
 
     void onReply(Message message);

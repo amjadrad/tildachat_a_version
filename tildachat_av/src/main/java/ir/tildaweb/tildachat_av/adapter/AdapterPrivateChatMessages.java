@@ -734,7 +734,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
         ArrayAdapter<String> mPopupAdapter = new ArrayAdapter<>(activity, R.layout.popup_menu_item, R.id.tvTitle, listItems);
         ListPopupWindow albumPopup = new ListPopupWindow(activity);
         albumPopup.setContentWidth(ListPopupWindow.WRAP_CONTENT);
-        albumPopup.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.bg_light_rounded_default));
+        albumPopup.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.bg_chat_message_popup));
         albumPopup.setAdapter(mPopupAdapter);
         albumPopup.setHeight(ListPopupWindow.WRAP_CONTENT);
         albumPopup.setAnchorView(view);
@@ -755,6 +755,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
             }
             albumPopup.dismiss();
         });
+        iChatUtils.onShowPopup();
         albumPopup.show();
 
 //        MenuInflater inflater = popup.getMenuInflater();
