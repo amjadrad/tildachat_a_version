@@ -115,6 +115,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
     private Typeface typeface = null;
     private boolean isDarkMode = false;
     private boolean isUserReadPreviousMessage = false;
+    private boolean isChannel = false;
 
 
     public AdapterPrivateChatMessages(Context context, Activity activity, int userId, String FILE_URL, RecyclerView recyclerView, ArrayList<Message> chatMessages, LoadMoreData loadMoreData, IChatUtils iChatUtils, Typeface typeface) {
@@ -709,26 +710,27 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
     private void showPopupMenu(View view, Message chatMessage, boolean isFromMe, boolean isText, boolean isChannel, boolean isChannelAdmin) {
         // copy , reply , delete
 //        PopupMenu popup = new PopupMenu(activity, (view));
-
-        String[] listItems;
+        Log.d(TAG, "showPopupMenu: isssss " + isChannel + "_" + isChannelAdmin);
+        String[] listItems = new String[]{"کپی"};
         if (isFromMe && isText) {
             listItems = new String[]{"کپی", "پاسخ دادن", "ویرایش", "حذف"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_me_text, popup.getMenu());
-        } else if (isFromMe && !isText) {
+        } else if (isFromMe) {
             listItems = new String[]{"پاسخ دادن", "حذف"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_me, popup.getMenu());
-        } else if (isText) {
+        }
+
+        if (!isFromMe && isText) {
             listItems = new String[]{"کپی", "پاسخ دادن"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_other_text, popup.getMenu());
-        } else if (!isText) {
+        } else if (!isFromMe) {
             listItems = new String[]{"پاسخ دادن"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_other, popup.getMenu());
-        } else if (isChannel && isChannelAdmin) {
+        }
+
+        if (isChannel && isChannelAdmin && isText) {
             listItems = new String[]{"کپی", "پاسخ دادن", "ویرایش", "حذف"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_me_text, popup.getMenu());
-        } else {
+        } else if (isChannel && isChannelAdmin) {
+            listItems = new String[]{"پاسخ دادن", "حذف"};
+        }
+        if (isChannel && !isChannelAdmin && isText) {
             listItems = new String[]{"کپی"};
-//            inflater.inflate(R.menu.popup_menu_chat_click_message_channel_other_text, popup.getMenu());
         }
 
         ArrayAdapter<String> mPopupAdapter = new ArrayAdapter<>(activity, R.layout.popup_menu_item, R.id.tvTitle, listItems);
@@ -859,7 +861,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     holder.binding.imageViewSeen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_chat_single_check));
                 }
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -892,9 +894,9 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     holder.binding.imageViewSeen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_chat_single_check));
                 }
 
-                holder.binding.tvMessage.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
-                holder.binding.linearChatMessage.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
+                holder.binding.tvMessage.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
+                holder.binding.linearChatMessage.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
                 break;
             }
             case 11211: {
@@ -920,7 +922,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     holder.binding.tvTime.setText(getTime(dateObject));
                 }
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -949,7 +951,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     holder.binding.tvTime.setText(getTime(dateObject));
                 }
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, true, isAdmin));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -992,7 +994,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getUser().getPicture()).placeholder(ContextCompat.getDrawable(context, R.drawable.ic_user_circle)).into(holder.binding.imageViewProfile);
                 holder.binding.linearLayoutUserInfo.setOnClickListener(view -> iChatUtils.onMessageItemUserInfoClick(chatMessage));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1052,7 +1054,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
                 holder.binding.linearLayoutReply.setOnClickListener(view -> getMessagePosition(chatMessage.getReplyMessageId(), SearchType.REPLY));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1112,7 +1114,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
                 holder.binding.linearLayoutReply.setOnClickListener(view -> getMessagePosition(chatMessage.getReplyMessageId(), SearchType.REPLY));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1167,7 +1169,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
                 holder.binding.linearLayoutReply.setOnClickListener(view -> getMessagePosition(chatMessage.getReplyMessageId(), SearchType.REPLY));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1239,7 +1241,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
                 holder.binding.linearLayoutUserInfo.setOnClickListener(view -> iChatUtils.onMessageItemUserInfoClick(chatMessage));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, true, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1263,7 +1265,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 21131: {
@@ -1284,7 +1286,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 21211: {
@@ -1298,7 +1300,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
             //channel picture
@@ -1345,7 +1347,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
             case 22111: {
@@ -1392,7 +1394,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 22131: {
@@ -1439,7 +1441,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 22211: {
@@ -1480,7 +1482,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
 
@@ -1535,7 +1537,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
             //File
@@ -1594,7 +1596,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     }
                 });
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1640,7 +1642,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                         downloadFile(chatMessage);
                     }
                 });
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1694,7 +1696,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                         }
                     }
                 });
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1814,7 +1816,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     }
                 });
                 holder.binding.linearLayoutUserInfo.setOnClickListener(view -> iChatUtils.onMessageItemUserInfoClick(chatMessage));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -1909,7 +1911,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 });
                 holder.binding.linearLayoutReply.setOnClickListener(view -> getMessagePosition(chatMessage.getReplyMessageId(), SearchType.REPLY));
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -2004,7 +2006,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 });
 
                 holder.binding.linearLayoutReply.setOnClickListener(view -> getMessagePosition(chatMessage.getReplyMessageId(), SearchType.REPLY));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -2172,7 +2174,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 holder.binding.tvUserName.setText(String.format("%s", name));
                 Glide.with(context).load(FILE_URL + chatMessage.getUser().getPicture()).placeholder(ContextCompat.getDrawable(context, R.drawable.ic_user_circle)).into(holder.binding.imageViewProfile);
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 holder.binding.tvMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 holder.binding.linearChatMessage.setOnClickListener(view -> holder.itemView.callOnClick());
                 break;
@@ -2192,7 +2194,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     holder.binding.imageViewSeen.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_chat_single_check));
                 }
                 holder.binding.coordinatorPlayVoice.setOnClickListener(view -> iChatUtils.onPlayVoice(chatMessage));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 41211: {
@@ -2204,7 +2206,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                 DateUtils.DateObject dateObject = dateHelper.getParsedDate(normalizedDate);
                 holder.binding.tvTime.setText(getTime(dateObject));
                 holder.binding.coordinatorPlayVoice.setOnClickListener(view -> iChatUtils.onPlayVoice(chatMessage));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
 
@@ -2230,7 +2232,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show();
                 });
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 51211: {
@@ -2250,7 +2252,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                     iChatUtils.onDelete(chatMessage);
                     new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show();
                 });
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
 
@@ -2294,7 +2296,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
                 holder.binding.imageView.setOnClickListener(view -> new DialogShowPicture(activity, FILE_URL, chatMessage.getMessage()).show());
 
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, true, false, isChannel, isAdmin));
                 break;
             }
             case 61211: {
@@ -2309,7 +2311,7 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
                         .setBlurRadius(15f);
                 Glide.with(context).load(FILE_URL + chatMessage.getMessage()).into(holder.binding.imageView);
                 holder.binding.imageView.setOnClickListener(view -> iChatUtils.onShowPurchasableSecurePicture(chatMessage));
-                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, false, false));
+                holder.itemView.setOnClickListener(view -> showPopupMenu(holder.binding.getRoot(), chatMessage, false, false, isChannel, isAdmin));
                 break;
             }
         }
@@ -2396,6 +2398,8 @@ public class AdapterPrivateChatMessages extends RecyclerView.Adapter<RecyclerVie
 
     public void setRoomType(ChatroomType roomType) {
         this.roomType = roomType;
+        this.isChannel = roomType == ChatroomType.CHANNEL;
+
     }
 
     public void setRoomAdmin(boolean isAdmin) {

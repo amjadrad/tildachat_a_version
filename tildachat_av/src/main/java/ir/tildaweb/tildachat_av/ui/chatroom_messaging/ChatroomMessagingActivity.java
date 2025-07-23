@@ -355,7 +355,7 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
 
     protected void setSocketListeners() {
         TildaChatApp.getSocketRequestController().receiver().receiveChatroomCheck(ChatroomMessagingActivity.this, ReceiveChatroomCheck.class, response -> {
-//            Log.d(TAG, "setSocketListeners: CheckChatroom: " + DataParser.toJson(response));
+            Log.d(TAG, "setSocketListeners: CheckChatroom: " + DataParser.toJson(response));
             if (response != null) {
                 receiveChatroomCheck = response;
                 if (response.getChatroom() != null) {
@@ -1456,6 +1456,10 @@ public class ChatroomMessagingActivity extends AppCompatActivity implements View
         usersAreWriting.clear();
         usersAreWritingIds.clear();
         handlerUsersAreWriting.postDelayed(runnableUsersAreWriting, 2000);
+    }
+
+    public boolean isAdmin() {
+        return this.isAdmin;
     }
 
 

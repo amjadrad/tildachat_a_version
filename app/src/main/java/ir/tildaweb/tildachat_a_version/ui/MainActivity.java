@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
 //            intent.putExtra("room_id", "chatroom_1_3");
             intent.putExtra("is_work_with_fullname", true);
 //            intent.putExtra("username", "ipom_channel");
-            intent.putExtra("username", "ehsan30");
+            intent.putExtra("username", "afjdjdjcj");
+//            intent.putExtra("username", "ehsan30");
 //            intent.putExtra("username", "ipom");
 //            intent.putExtra("username", "the_master");
             startActivity(intent);

@@ -2,7 +2,7 @@ package ir.tildaweb.tildachat_av.models.connection_models.emits;
 
 import com.google.gson.annotations.SerializedName;
 
-public class EmitChatroomGroupLeft {
+public class EmitChatroomLeft {
 
     @SerializedName("user_id")
     private Integer userId;

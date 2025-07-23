@@ -2,7 +2,7 @@ package ir.tildaweb.tildachat_av.models.connection_models.receives;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ReceiveChatroomGroupLeft {
+public class ReceiveChatroomLeft {
 
     @SerializedName("status")
     private Integer status;
